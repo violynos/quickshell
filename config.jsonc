@@ -1,0 +1,138 @@
+{
+	// Waybar config (basic skeleton, migrated from old setup)
+
+	// Bar placement and look
+	"layer": "top",            // draw on top of other windows
+	"position": "top",         // bottom | top | left | right
+	"height": 16,
+	"spacing": 0,              // space between modules
+	"margin": "0 0 0 0",
+	"name": "waybar",
+	"reload_style_on_change": true,
+
+	// Layout
+	"modules-left": [
+		"hyprland/workspaces"
+	//	"group/gload"
+	],
+	"modules-center": [
+		"clock"
+	//	"hyprland/window"
+	],
+	"modules-right": [
+	//	"tray",
+		"battery",
+		"group/gpower"
+	// add options and stuff later	
+	],
+
+	// Groups (click-to-drawer style, same idea as before)
+	"group/gload": { // removed, maybe used later as a right side submenu/tab
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 50,
+			"transition-left-to-right": true,
+			"children-class": "not-cpu"
+		},
+		"modules": [
+			"cpu",
+			"network",
+			"memory"
+		]
+	},
+	"group/gpower": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 50,
+			"children-class": "not-power",
+			"transition-left-to-right": false
+		},
+		"modules": [
+			"custom/power",
+			"custom/quit",
+			"custom/lock",
+			"custom/reboot"
+		]
+	},
+
+	// Module config
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"11": "1", "12": "2", "13": "3", "14": "4", "15": "5"
+		},
+		"on-click": "activate"
+		// persistent-workspaces: add per monitor once the layout is settled
+	},
+	"hyprland/window": {
+		"rewrite": {
+			"": "  "
+		}
+	},
+	"clock": { // removed utility
+		"format": "{:%H:%M}",
+		//"format-alt": "{0:%d/%m/%y} {0:%H:%M}",
+		//"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		//"calendar": {
+		//	"mode": "month",
+		//	"mode-mon-col": 3,
+		//	"weeks-pos": "right",
+		//	"on-scroll": 1,
+		//	"format": {
+		//		"months":   "<span color='#ffead3'><b>{}</b></span>",
+		//		"days":     "<span color='#ecc6d9'><b>{}</b></span>",
+		//		"weeks":    "<span color='#99ffdd'><b>{}</b></span>",
+		//		"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+		//		"today":    "<span color='#ff6699'><b><u>{}</u></b></span>"
+		//	}
+		//}
+	},
+	"tray": { //fully removed, will add it back in the hover mode of center pill.
+		"icon-size": 20,
+		"spacing": 5
+	},
+	"battery": {
+		"format": "{capacity}%",
+		"format-charging": "{capacity}% ",
+		"states": {
+			"warning": 30,
+			"critical": 15
+		}
+	},
+	"cpu": {
+		"format": "󰻠 {usage}%",
+		"interval": 2
+	},
+	"memory": {
+		"format": "󰍛 {}%",
+		"interval": 5
+	},
+	"network": {
+		"format-wifi": "󰖩 {signalStrength}%",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰖪",
+		"tooltip-format": "{ifname} {ipaddr}"
+	},
+
+	// Power group
+	"custom/power": {
+		"format": "󰐥",
+		"tooltip": false,
+		"on-click": "shutdown now"
+	},
+	"custom/quit": {
+		"format": "󰗽",
+		"tooltip": false,
+		"on-click": "hyprctl dispatch exit"
+	},
+	"custom/lock": {
+		"format": "󰍁",
+		"tooltip": false,
+		"on-click": "hyprlock"
+	},
+	"custom/reboot": {
+		"format": "󰜉",
+		"tooltip": false,
+		"on-click": "reboot"
+	}
+}
