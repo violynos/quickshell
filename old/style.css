@@ -1,0 +1,84 @@
+/*
+ * Waybar style.css — bg-1 / bg-2 test pass
+ *
+ * GTK CSS cannot mask, so the "window into bg-2" effect is faked:
+ *   - the bar itself is solid bg-1
+ *   - any element that should reveal bg-2 gets the SAME bg-2 image,
+ *     shifted with background-position so the pieces line up as one picture
+ *
+ * Placeholders to replace:
+ *   BG2_IMAGE  -> path to your bg-2 image
+ *   BAR_WIDTH  -> your monitor width in px (the image is sized to it)
+ *   the -X px offsets -> each element's x position inside the bar
+ */
+
+@define-color bg1 #1e1e2e;
+@define-color bg2-tint rgba(0, 0, 0, 0.0);
+@define-color text #cdd6f4;
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    color: @text;
+}
+
+/* main bar: bg-1 everywhere */
+window#waybar {
+    background-color: transparent;
+}
+
+/* ---- center pill: a window into bg-2 ---- */
+/* test element: shows bg-2 through a rounded pill.
+   background-position is negative so the picture lines up with the
+   full-width bg-2 that the other windows use. */
+#clock {
+    padding: 0 16px;
+    margin: 2px 0;
+    border-radius: 999px;
+    background-image: url("abst.png");
+    background-size: 1920px auto;
+    background-position: -500px 0;   /* shift = clock's x position in the bar */
+}
+
+/* ---- right side: battery and power group ---- */
+#battery {
+    padding: 0 12px;
+    background-image: url("abst.png");
+    background-size: 1920px auto;
+    background-position: -1600px 0;  /* shift = battery's x position */
+    border-radius: 999px;
+    margin: 2px 4px;
+}
+
+#group-gpower {
+    margin: 2px 6px;
+}
+
+#custom-power,
+#custom-quit,
+#custom-lock,
+#custom-reboot {
+    padding: 0 8px;
+    margin: 2px 0;
+}
+
+#custom-power:hover,
+#custom-quit:hover,
+#custom-lock:hover,
+#custom-reboot:hover {
+    color: #f38ba8;
+}
+
+/* ---- left side: workspaces, plain for now ---- */
+#workspaces button {
+    padding: 0 8px;
+    color: @text;
+    background: transparent;
+}
+
+#workspaces button.active {
+    color: #f5c2e7;
+}

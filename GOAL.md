@@ -1,5 +1,5 @@
 # yo
-so my goal is to have a cool waybar right
+so my goal is to have a cool bar right
 ## goals and stuff:
 most of the concept is stolen from [this one reddit post](https://www.reddit.com/r/unixporn/comments/1wtdcwy/hyprland_replaced_ewwwaybarrofidunst_with/) but i couldnt get theirs working thus i started work on this.
 i want it to be efficient, as in to be responsive and not use much resources. basically i want the work that goes into this to be invisible as if it was meant to be like it. this also means multiple ways to close/access stuff, and general accessability and whatever makes sense.
@@ -34,10 +34,10 @@ i want it to be efficient, as in to be responsive and not use much resources. ba
         - [ ] ...
     - [ ] right
         - [ ] ...
-- [ ] figure out how to make waybar draw outside its designated area.
+- [ ] figure out how to make looks draw outside its designated area.
 - [ ] get the backgrounds to behave
 - [ ] set up colors so they work in inverted mode too
 ## credits
-- shoutouts to [Mugiwaraa](https://www.reddit.com/user/Weak_Avocado_4905/) or [SaratAngajalaoffl](https://github.com/SaratAngajalaoffl) for the idea and i looks
+- shoutouts to [Mugiwaraa](https://www.reddit.com/user/Weak_Avocado_4905/) or [SaratAngajalaoffl](https://github.com/SaratAngajalaoffl) for the idea and looks
 - shoutouts to myself for this file
 - and Haiku 5.5 for the actual work lmfao

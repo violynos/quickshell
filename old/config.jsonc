@@ -4,7 +4,7 @@
 	// Bar placement and look
 	"layer": "top",            // draw on top of other windows
 	"position": "top",         // bottom | top | left | right
-	"height": 16,
+	"height": 24,
 	"spacing": 0,              // space between modules
 	"margin": "0 0 0 0",
 	"name": "waybar",
