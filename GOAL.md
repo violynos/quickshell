@@ -28,14 +28,14 @@ i want it to be efficient, as in to be responsive and not use much resources. ba
 - inverted-mode swaps bg functionality and switches the colors to the second backgrounds as main. (could be useful to set on a timer to swap to inverted-mode at night for a night mode type shi)
 ## TO-DO
 - [ ] main functionality
-    - [x] basic stuff, basic skeleton
+    - [ ] basic stuff, basic skeleton
     - [ ] left
     - [ ] center
         - [ ] ...
     - [ ] right
         - [ ] ...
 - [ ] figure out how to make looks draw outside its designated area.
-- [ ] get the backgrounds to behave
+- [x] get the backgrounds to behave
 - [ ] set up colors so they work in inverted mode too
 ## credits
 - shoutouts to [Mugiwaraa](https://www.reddit.com/user/Weak_Avocado_4905/) or [SaratAngajalaoffl](https://github.com/SaratAngajalaoffl) for the idea and looks
