@@ -4,6 +4,7 @@ so my goal is to have a cool bar right
 most of the concept is stolen from [this one reddit post](https://www.reddit.com/r/unixporn/comments/1wtdcwy/hyprland_replaced_ewwwaybarrofidunst_with/) but i couldnt get theirs working thus i started work on this.
 i want it to be efficient, as in to be responsive and not use much resources. basically i want the work that goes into this to be invisible as if it was meant to be like it. this also means multiple ways to close/access stuff, and general accessability and whatever makes sense.
 ## rn i have these ideas for its function and looks:
+- 8px global rounding
 - versions go like this (v69.420l):
     - v - version
     - 69 - major milestone (big releases)

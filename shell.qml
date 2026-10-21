@@ -1,74 +1,39 @@
 import Quickshell
 import QtQuick
-import QtQuick.Effects
+import QtQuick.Layouts
+import Quickshell.Wayland
+import Quickshell.Hyprland
+
+import "config.js" as Config
 
 PanelWindow {
-    id: bar
-    anchors {
-        top: true
-        left: true
-        right: true
-    }
-    implicitHeight: 24
-    color: "transparent"
+	anchors.top:true
+	anchors.left: true
+	anchors.right: true
+	implicitHeight: 24
+	color: Config.colors.bg
 
-    readonly property string home: Quickshell.env("HOME")
+	RowLayout {
+		anchors.fill: parent
+		anchors.margins: 4
+		
+		Repeater {
+			model: 5
+			Text {
+				property var ws: Hyprland.workspaces.values.find(w => w.id === index + 11)
+				property bool isActive: Hyprland.focusedWorkspace?.id === (index+11)
 
-    SystemClock {
-        id: clock
-        precision: SystemClock.Seconds
-    }
+				text: isActive ? "—" : (ws ? "–" : "-")
 
-    // bar background: bg-1 across the full width
-    Image {
-        anchors.fill: parent
-        //source: "file://" + bar.home + "/rice/wallpaper/bg-1.png"
-        //fillMode: Image.PreserveAspectCrop
-	//verticalAlignment: Image.AlignTop
-    }
+				color: isActive ? "#0db9d7" : (ws ? "#7aa2f7" : "#444b6a")
+				font { pixelSize: 12; bold: true }
 
-    // rounded mask for the pill
-    Rectangle {
-        id: pillMask
-        visible: false
-        layer.enabled: true
-        width: pill.width
-        height: pill.height
-        radius: height / 2
-        color: "white"
-    }
-
-    // center pill: a window into bg-2
-    Item {
-        id: pill
-        anchors.centerIn: parent
-        width: label.implicitWidth + 28
-        height: bar.height
-
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            maskEnabled: true
-            maskSource: pillMask
-        }
-
-        // bg-2 is sized to the whole bar and offset by the pill's position,
-        // so the pill shows the same part of the picture bg-1 shows there
-        Image {
-            x: -pill.x
-            y: -pill.y
-            width: bar.width
-            height: bar.height
-            source: "file://" + bar.home + "/rice/wallpaper/bg-2.png"
-	    fillMode: Image.PreserveAspectCrop
-	    verticalAlignment: Image.AlignTop
-        }
-
-        Text {
-            id: label
-            anchors.centerIn: parent
-            text: Qt.formatDateTime(clock.date, "HH:mm:ss")
-            color: "#cdd6f4"
-            font.pixelSize: 12
-        }
-    }
+				MouseArea {
+					anchors.fill: parent
+					onClicked: Hyprland.dispatch("workspace "+ (index + 11))
+				}
+			}
+		}
+		Item { Layout.fillWidth: true }
+	}
 }
